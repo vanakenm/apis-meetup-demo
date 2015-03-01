@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'trello'
 
 post '/form_posted' do
   title = params["Field3"]
