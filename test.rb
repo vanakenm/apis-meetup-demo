@@ -2,8 +2,18 @@ require 'dotenv'
 require 'rest-client'
 require 'json'
 require 'twilio-ruby'
+require 'trello'
 
 Dotenv.load
+
+def geocoding_example
+  url = "https://maps.googleapis.com/maps/api/geocode/json"
+
+  response = RestClient.get url, 
+  {:params => {address: "5 place Sainte Gudule, 1000 Bruxelles", key: ENV['GOOGLE_GEOCODE_KEY'] }}
+
+  data = JSON.parse(response)
+end
 
 def meetup_example
   key = ENV['MEETUP_KEY']
@@ -18,13 +28,27 @@ def meetup_example
   end
 end
 
-def trello_example
+def trello_get_example
   token = ENV['TRELLO_TOKEN']
   key = ENV['TRELLO_KEY']
 
-  response = RestClient.get 'https://api.trello.com/1/boards/kxWSvBft', 
+  response = RestClient.get 'https://api.trello.com/1/boards/PVsXyxnK', 
   {:params => {key: key, token: token, cards: "all" }}
   JSON.parse(response)
+end
+
+def trello_post_example
+
+  Trello.configure do |config|
+    config.developer_public_key = ENV['TRELLO_KEY'] # The "key" from step 1
+    config.member_token = ENV['TRELLO_TOKEN'] # The token from step 3.
+  end
+
+  Trello::Card.create(list_id: "54f345c72e55d08bbb83cb19", name:"test", desc: "Long test")
+
+  # response = RestClient.post 'https://api.trello.com/1/cards', 
+  # {:params => {key: key, token: token, idList: "54a94802fc3880e585d15e39", name: "New Card", desc: "Ready to start" }}
+  # JSON.parse(response)
 end
 
 def twilio_example
@@ -41,4 +65,4 @@ def twilio_example
   )
 end
 
-meetup_example
+p trello_post_example

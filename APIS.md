@@ -12,7 +12,6 @@ Show of hands: programmers in the room ?
 ## Interfaces
 * Black box with in/out definition.
 
-
 ## APIs vs Librairies
 * Both are piece of reusable code
 * The library runs on your server
@@ -41,6 +40,13 @@ Good for:
 * SMS: twilio
 * Mail: Mandrill
 * Payment: Stripe
+* Meetup
+
+# Live examples
+* Trello
+* Twilio
+* Meetup
+* Geocoding
 
 # Access types
 
@@ -51,10 +57,16 @@ Good for:
  # APIs vs Webhook
  * You call an API
  * The webhook is calling you
+ * Trello example
 
  Good to avoid "polling"
 
-# Demo
+## Live examples
+* Wufoo
+* Trello
+* Using requestbin
+
+# The full story
 ## It all started with a website
 
 ## Then a form
@@ -70,6 +82,10 @@ Get meetup members somewhere
 * and IFTTT
 
 # The Dark Side
+
+## Mind your keys
+* They can be used to impersonate you/your app
+* Or worse
 
 ## So, you just coupled your business to someone else whims
 * Google Translate example
