@@ -2,7 +2,7 @@ require 'sinatra'
 require 'trello'
 
 post '/form_posted' do
-  title = params["Field3"]
+  name = params["Field3"]
   email = params["Field4"]
   content = params["Field6"]
 
@@ -11,7 +11,7 @@ post '/form_posted' do
     config.member_token = ENV['TRELLO_TOKEN'] # The token from step 3.
   end
 
-  Trello::Card.create(list_id: "54f345c72e55d08bbb83cb19", name:title, desc: content)
+  Trello::Card.create(list_id: "54f345c72e55d08bbb83cb19", name:email, desc: name + "|" + content)
 end
 
 get '/' do
