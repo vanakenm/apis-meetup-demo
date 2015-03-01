@@ -13,3 +13,7 @@ post '/form_posted' do
 
   Trello::Card.create(list_id: "54f345c72e55d08bbb83cb19", name:title, desc: content)
 end
+
+get '/' do
+  'Hello world!'
+end
